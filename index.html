@@ -221,13 +221,13 @@
       products = loaded;
       renderProducts();
       renderCart();
-      if (note) note.textContent = 'فهرست محصولات از گوگل‌شیت به‌روز شد.';
+      if (note) note.textContent = 'قیمت‌ها از گوگل‌شیت دریافت شد؛ آخرین بررسی: ' + new Date().toLocaleTimeString('fa-IR');
     } catch (error) {
       console.error('خطا در دریافت محصولات:', error);
       products = fallbackProducts;
       renderProducts();
       renderCart();
-      if (note) note.textContent = 'اتصال به گوگل‌شیت برقرار نشد؛ فعلاً فهرست پیش‌فرض نمایش داده می‌شود.';
+      if (note) note.textContent = 'دریافت قیمت‌ها از گوگل‌شیت ناموفق بود؛ فهرست پیش‌فرض نمایش داده می‌شود. جزئیات در Console مرورگر است.';
     }
   }
 
@@ -352,6 +352,8 @@
 
   loadProducts();
   renderCart();
+  // تا وقتی صفحه باز است، محصولات هر ۵ دقیقه دوباره از گوگل‌شیت خوانده می‌شوند.
+  window.setInterval(loadProducts, 5 * 60 * 1000);
 </script>
 </body>
 </html>
