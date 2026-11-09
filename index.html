@@ -99,6 +99,7 @@
   <div class="wrap trust"><div class="trust-row"><div class="trust-item"><b>✓</b> قیمت‌های شفاف</div><div class="trust-item"><b>◎</b> ارتباط مستقیم</div><div class="trust-item"><b>↗</b> سفارش آسان</div></div></div>
   <section class="section" id="products"><div class="wrap"><div class="section-head"><div><div class="section-kicker">انتخاب هوشمندانه</div><h2>محصولات ما</h2><p class="sub">قیمت‌ها به تومان و برای هر کیلوگرم هستند.</p></div></div>
     <div class="tools"><input id="search" class="search" type="search" placeholder="جست‌وجوی محصول…" aria-label="جست‌وجوی محصول"><div class="filters" id="filters"><button class="filter active" data-category="همه">همه</button><button class="filter" data-category="حبوبات">حبوبات</button><button class="filter" data-category="غذای آماده">غذای آماده</button><button class="filter" data-category="چاشنی و سایر">چاشنی و سایر</button></div></div>
+    <p id="productLoadNote" class="sub" role="status">در حال دریافت فهرست و قیمت‌های روز…</p>
     <div class="grid" id="productGrid"></div>
   </div></section>
 
@@ -129,7 +130,9 @@
 <a class="floating-order" href="https://eitaa.com/sefaresh_mon" target="_blank" rel="noopener">✉ سفارش در ایتا</a>
 <button class="cart-fab" id="cartFab" type="button">🛒 سبد خرید <span id="fabCount">۰</span></button>
 <script>
-  const products = [
+  const PRODUCTS_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS6LeFE6ePlMmdVvLHhOMkZdY_9l0fRCsNksSSJZ6H4fzZHXrxL5-DOQa0zaU5D6Wpe_8Gu96vO8yr_/pub?output=csv';
+  let products = [];
+  const fallbackProducts = [
     {name:'عدس',category:'حبوبات',price:165000,icon:'🫘'},
     {name:'لوبیا چیتی ارتشی',category:'حبوبات',price:320000,icon:'🫘'},
     {name:'لوبیا چیتی ساده',category:'حبوبات',price:300000,icon:'🫘'},
@@ -143,6 +146,91 @@
     {name:'خرمای بی‌هسته',category:'چاشنی و سایر',price:185000,icon:'🌴'}
   ];
   const fmt = n => new Intl.NumberFormat('fa-IR').format(n);
+
+  function normalizeHeader(s) {
+    return (s || '').toString().trim().toLowerCase()
+      .replace(/[\u064B-\u065F\u0670]/g,'')
+      .replace(/[\s_\-‌]+/g,'');
+  }
+  function parseCSV(text) {
+    const rows = [];
+    let row = [], cell = '', quoted = false;
+    for (let i=0; i<text.length; i++) {
+      const ch = text[i], next = text[i+1];
+      if (ch === '"' && quoted && next === '"') { cell += '"'; i++; }
+      else if (ch === '"') quoted = !quoted;
+      else if (ch === ',' && !quoted) { row.push(cell.trim()); cell=''; }
+      else if ((ch === '\n' || ch === '\r') && !quoted) {
+        if (ch === '\r' && next === '\n') i++;
+        row.push(cell.trim()); cell='';
+        if (row.some(v => v !== '')) rows.push(row);
+        row=[];
+      } else cell += ch;
+    }
+    row.push(cell.trim());
+    if (row.some(v => v !== '')) rows.push(row);
+    return rows;
+  }
+  function toPrice(value) {
+    const persian = '۰۱۲۳۴۵۶۷۸۹', arabic = '٠١٢٣٤٥٦٧٨٩';
+    const digits = (value || '').toString()
+      .replace(/[۰-۹]/g, d => persian.indexOf(d))
+      .replace(/[٠-٩]/g, d => arabic.indexOf(d))
+      .replace(/[^0-9]/g,'');
+    return Number(digits);
+  }
+  function findCol(headers, aliases) {
+    const normalized = headers.map(normalizeHeader);
+    for (const alias of aliases) {
+      const index = normalized.indexOf(normalizeHeader(alias));
+      if (index >= 0) return index;
+    }
+    return -1;
+  }
+  async function loadProducts() {
+    const note = document.getElementById('productLoadNote');
+    try {
+      const response = await fetch(PRODUCTS_CSV_URL, {cache:'no-store'});
+      if (!response.ok) throw new Error('CSV response: ' + response.status);
+      const rows = parseCSV((await response.text()).replace(/^\uFEFF/, ''));
+      if (rows.length < 2) throw new Error('CSV has no product rows');
+      const headers = rows[0];
+      const nameCol = findCol(headers, ['نام محصول','نام کالا','product name','name','محصول']);
+      const priceCol = findCol(headers, ['قیمت فروش','قیمت','قیمت (تومان)','sale price','price']);
+      const categoryCol = findCol(headers, ['دسته‌بندی','دسته بندی','category']);
+      const stockCol = findCol(headers, ['وضعیت موجودی','موجودی','stock status','stock']);
+      if (nameCol < 0 || priceCol < 0) {
+        throw new Error('ستون‌های نام و قیمت شناسایی نشدند. Header row: ' + headers.join(' | '));
+      }
+      const loaded = rows.slice(1).map(r => {
+        const name = (r[nameCol] || '').trim();
+        const price = toPrice(r[priceCol]);
+        const category = categoryCol >= 0 && r[categoryCol] ? r[categoryCol].trim() : 'سایر';
+        const stock = stockCol >= 0 ? normalizeHeader(r[stockCol]) : '';
+        const unavailable = ['ناموجود','اتمامموجودی','بهزودی','ناموجوداست'].includes(stock);
+        let icon = '🛍️';
+        if (/عدس|لوبیا|ماش|نخود|لپه/.test(name)) icon = '🫘';
+        else if (/کباب|مرغ|گوشت|ماهی/.test(name)) icon = '🍢';
+        else if (/فلافل/.test(name)) icon = '🧆';
+        else if (/زیتون/.test(name)) icon = '🫒';
+        else if (/عسل/.test(name)) icon = '🍯';
+        else if (/خرما/.test(name)) icon = '🌴';
+        return {name, price, category, icon, unavailable};
+      }).filter(p => p.name && p.price > 0 && !p.unavailable);
+      if (!loaded.length) throw new Error('هیچ ردیف دارای نام و قیمت معتبر در CSV پیدا نشد');
+      products = loaded;
+      renderProducts();
+      renderCart();
+      if (note) note.textContent = 'فهرست محصولات از گوگل‌شیت به‌روز شد.';
+    } catch (error) {
+      console.error('خطا در دریافت محصولات:', error);
+      products = fallbackProducts;
+      renderProducts();
+      renderCart();
+      if (note) note.textContent = 'اتصال به گوگل‌شیت برقرار نشد؛ فعلاً فهرست پیش‌فرض نمایش داده می‌شود.';
+    }
+  }
+
   let selectedCategory = 'همه';
   const cart = {};
   const grid = document.getElementById('productGrid');
@@ -262,7 +350,7 @@
     window.open('https://eitaa.com/sefaresh_mon','_blank','noopener');
   });
 
-  renderProducts();
+  loadProducts();
   renderCart();
 </script>
 </body>
