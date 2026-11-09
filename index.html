@@ -113,8 +113,10 @@
           <label>شماره تماس<input id="customerPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="مثلاً 0912xxxxxxx" required></label>
         </div>
         <div class="checkout-actions">
-          <button class="checkout-btn" id="checkoutBtn" type="button">تأیید و آماده‌سازی سفارش در ایتا</button>
-          <span class="checkout-note">پس از آماده شدن فاکتور، گفت‌وگوی ایتا باز می‌شود. متن سفارش کپی شده و کافی است آن را در گفت‌وگو Paste و ارسال کنید.</span>
+          <button class="checkout-btn" id="checkoutBtn" type="button">۱) ساخت فاکتور سفارش</button>
+          <button class="checkout-btn" id="copyOrderBtn" type="button" style="background:#2859a0">۲) کپی فاکتور</button>
+          <button class="checkout-btn" id="openEitaaBtn" type="button" style="background:#238b62">۳) باز کردن گفت‌وگوی ایتا</button>
+          <span class="checkout-note" id="checkoutNote">ابتدا فاکتور را بسازید، سپس آن را کپی کنید و در گفت‌وگوی ایتا Paste و ارسال کنید.</span>
         </div>
         <textarea id="orderOutput" class="order-output" readonly aria-label="متن سفارش آماده ارسال"></textarea>
       </div>
@@ -202,12 +204,12 @@
   });
   document.getElementById('cartFab').addEventListener('click',()=>document.getElementById('cart').scrollIntoView({behavior:'smooth'}));
 
-  document.getElementById('checkoutBtn').addEventListener('click',async()=>{
+  function buildOrderText(){
     const entries=Object.entries(cart).filter(([,qty])=>qty>0);
-    if(!entries.length){alert('سبد خرید شما خالی است. ابتدا محصول اضافه کنید.');return;}
+    if(!entries.length){alert('سبد خرید شما خالی است. ابتدا محصول اضافه کنید.');return null;}
     const name=document.getElementById('customerName').value.trim();
     const phone=document.getElementById('customerPhone').value.trim();
-    if(!name||!phone){alert('لطفاً نام و شماره تماس را وارد کنید.');return;}
+    if(!name||!phone){alert('لطفاً نام و شماره تماس را وارد کنید.');return null;}
     const total=entries.reduce((sum,[productName,qty])=>sum+products.find(p=>p.name===productName).price*qty,0);
     const lines=[
       '🛒 سفارش جدید از کاتالوگ خرید منصفانه',
@@ -222,29 +224,42 @@
       'جمع کل: '+fmt(total)+' تومان',
       'لطفاً برای تأیید موجودی و هماهنگی ارسال با مشتری تماس بگیرید.'
     ];
-    const orderText=lines.join('\\n');
+    const orderText=lines.join('\n');
     const output=document.getElementById('orderOutput');
     output.value=orderText;
     output.style.display='block';
-    output.focus();
-    output.select();
+    document.getElementById('checkoutNote').textContent='فاکتور آماده شد. حالا دکمه «کپی فاکتور» را بزنید.';
+    return orderText;
+  }
 
-    // پنجره ایتا در همان کلیک کاربر باز می‌شود؛ متن سفارش در کلیپ‌بورد قرار می‌گیرد.
-    window.open('https://eitaa.com/sefaresh_mon','_blank','noopener');
+  document.getElementById('checkoutBtn').addEventListener('click',()=>{
+    buildOrderText();
+  });
+
+  document.getElementById('copyOrderBtn').addEventListener('click',async()=>{
+    const output=document.getElementById('orderOutput');
+    if(!output.value){alert('ابتدا دکمه «ساخت فاکتور سفارش» را بزنید.');return;}
     let copied=false;
     try{
       if(navigator.clipboard && window.isSecureContext){
-        await navigator.clipboard.writeText(orderText);
+        await navigator.clipboard.writeText(output.value);
         copied=true;
-      }else{
-        copied=document.execCommand('copy');
       }
-    }catch(err){
-      try{copied=document.execCommand('copy');}catch(e){copied=false;}
+    }catch(err){}
+    if(!copied){
+      output.focus();
+      output.select();
+      output.setSelectionRange(0,output.value.length);
+      try{copied=document.execCommand('copy');}catch(err){copied=false;}
     }
-    alert(copied
-      ? 'متن فاکتور کپی شد و گفت‌وگوی ایتا باز شد. در گفت‌وگو Paste کنید و دکمه ارسال را بزنید.'
-      : 'گفت‌وگوی ایتا باز شد. متن فاکتور در کادر پایین نمایش داده شده؛ آن را کپی و در گفت‌وگو ارسال کنید.');
+    document.getElementById('checkoutNote').textContent=copied
+      ? 'فاکتور کپی شد. وارد ایتا شوید و در گفت‌وگو Paste و ارسال کنید.'
+      : 'کپی خودکار انجام نشد؛ متن داخل کادر را انتخاب و از منوی گوشی Copy کنید.';
+    if(!copied){output.focus();output.select();}
+  });
+
+  document.getElementById('openEitaaBtn').addEventListener('click',()=>{
+    window.open('https://eitaa.com/sefaresh_mon','_blank','noopener');
   });
 
   renderProducts();
