@@ -3,38 +3,130 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#173f35">
-  <title>خرید منصفانه | از تولیدکننده تا مصرف‌کننده</title>
+  <meta name="theme-color" content="#183b72">
+  <title>خرید منصفانه | بازار مستقیم</title>
   <meta name="description" content="کاتالوگ محصولات خرید منصفانه؛ مشاهده قیمت روز و ثبت سفارش از طریق ایتا.">
   <style>
-    :root{--green:#173f35;--green2:#236451;--cream:#f7f5ef;--ink:#202923;--muted:#718078;--line:#e8e9e2;--white:#fff;--gold:#d8a84e}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.8}
-    a{color:inherit;text-decoration:none}.wrap{width:min(1160px,92%);margin:auto}
-    header{background:var(--green);color:white;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px #102d2620}
-    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-size:21px;font-weight:800;letter-spacing:-.5px}.brand span{color:#e9c77e}.navlinks{display:flex;gap:22px;font-size:13px;color:#e2ebe6}.navbtn,.order{background:var(--gold);color:#1f2c24;padding:10px 17px;border-radius:12px;font-weight:700;font-size:13px;display:inline-block}
-    .hero{padding:58px 0 48px;background:linear-gradient(125deg,#173f35,#28634f);color:#fff;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:30px;align-items:center}.eyebrow{color:#e9c77e;font-size:13px;font-weight:bold}.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.5;margin:10px 0}.hero p{color:#d9e6df;max-width:650px;font-size:15px}.hero-art{min-height:210px;border:1px solid #ffffff30;border-radius:28px;background:radial-gradient(circle at 30% 30%,#d8a84e55,transparent 38%),linear-gradient(145deg,#ffffff18,#ffffff08);display:grid;place-items:center;font-size:76px}
-    .features{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.features span{font-size:12px;background:#ffffff16;border:1px solid #ffffff25;padding:7px 12px;border-radius:30px}
-    .section{padding:42px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}.section h2{margin:0;font-size:24px}.sub{color:var(--muted);font-size:13px;margin:4px 0 0}.tools{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.search{flex:1;min-width:220px;border:1px solid var(--line);background:white;padding:13px 15px;border-radius:12px;font:inherit;outline:none}.search:focus{border-color:var(--green2)}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:white;padding:9px 13px;border-radius:10px;cursor:pointer;font:inherit;font-size:12px}.filter.active{background:var(--green);color:white;border-color:var(--green)}
-    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:white;border:1px solid var(--line);border-radius:17px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px #1b382312}.product-visual{height:145px;display:grid;place-items:center;background:linear-gradient(135deg,#f4efe2,#e6eadf);font-size:56px}.card-body{padding:15px}.category{font-size:11px;color:var(--green2);font-weight:bold}.card h3{font-size:16px;margin:5px 0}.price{font-size:18px;font-weight:800;color:var(--green);margin:9px 0 2px}.unit{font-size:11px;color:var(--muted)}.card .order{width:100%;text-align:center;margin-top:13px;background:var(--green);color:white;padding:9px}.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);background:#fff;border-radius:15px}
-    .banner{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px;display:flex;justify-content:space-between;align-items:center;gap:20px}.banner h2{margin:0 0 5px}.banner p{margin:0;color:var(--muted);font-size:13px}.banner .order{background:var(--green);color:white;white-space:nowrap}
-    footer{background:#142f28;color:#dce8e1;padding:30px 0;margin-top:35px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot small{color:#aebfb5}.foot a{color:#f0cf86}
-    @media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:130px}.navlinks{display:none}}
-    @media(max-width:480px){.grid{gap:10px}.product-visual{height:110px}.card-body{padding:11px}.card h3{font-size:14px}.price{font-size:16px}.hero{padding:38px 0}.banner{align-items:flex-start;flex-direction:column}}
+    :root{--forest:#173f35;--forest2:#245c4b;--mint:#e9f1e9;--cream:#faf8f2;--ink:#202a25;--muted:#748078;--line:#e9e8df;--gold:#e7bd68;--white:#fff;--shadow:0 18px 45px #183b2d12}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--cream);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.85}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,92%);margin:auto}
+    header{position:sticky;top:0;z-index:20;background:#173f35f5;color:#fff;backdrop-filter:blur(12px);box-shadow:0 5px 25px #102d2618}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-size:23px;font-weight:900;letter-spacing:-1px}.brand span{color:var(--gold)}.navlinks{display:flex;gap:28px;font-size:13px;color:#e3eee8}.navlinks a:hover{color:var(--gold)}.navbtn,.order{display:inline-flex;align-items:center;justify-content:center;background:var(--gold);color:#24352b;padding:11px 20px;border-radius:13px;font-weight:800;font-size:13px;transition:.2s}.navbtn:hover,.order:hover{transform:translateY(-2px);filter:brightness(1.04)}
+    .hero{position:relative;isolation:isolate;padding:72px 0 68px;background:radial-gradient(ellipse at 85% 15%,#4e866b66,transparent 36%),radial-gradient(ellipse at 10% 100%,#d7b56a2b,transparent 32%),linear-gradient(120deg,#12392f,#28634f);color:#fff;overflow:hidden}.hero:after{content:"";position:absolute;z-index:-1;inset:0;opacity:.13;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(90deg,transparent,#000)}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#f1d28f;font-size:13px;font-weight:800;background:#ffffff12;border:1px solid #ffffff25;padding:7px 13px;border-radius:30px}.hero h1{font-size:clamp(32px,5.3vw,56px);line-height:1.45;margin:17px 0 12px;letter-spacing:-1.5px}.hero p{color:#d9e8df;max-width:610px;font-size:15px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.hero-actions .secondary{border:1px solid #ffffff55;color:#fff;padding:10px 18px;border-radius:13px;font-size:13px}.hero-art{min-height:265px;border:1px solid #ffffff2d;border-radius:34px;background:linear-gradient(145deg,#ffffff20,#ffffff08);box-shadow:inset 0 1px #ffffff35,0 25px 60px #102c2633;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid #ffffff24;border-radius:50%;width:250px;height:250px}.hero-art:after{width:190px;height:190px}.hero-emojis{font-size:66px;z-index:1;filter:drop-shadow(0 12px 12px #142e2c55);letter-spacing:5px}.hero-art small{z-index:1;color:#f3e6c6;margin-top:14px;font-size:12px;letter-spacing:1px}
+    .trust{margin-top:-24px;position:relative;z-index:2}.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;background:#fff;padding:18px;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.trust-item{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--forest);font-size:13px;font-weight:700}.trust-item b{font-size:21px}
+    .section{padding:54px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}.section h2{margin:0;font-size:27px;letter-spacing:-.5px}.sub{color:var(--muted);font-size:13px;margin:5px 0 0}.section-kicker{font-size:11px;color:var(--forest2);font-weight:800;letter-spacing:1px;margin-bottom:5px}.tools{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}.search{flex:1;min-width:220px;border:1px solid var(--line);background:#fff;padding:14px 17px;border-radius:14px;font:inherit;outline:none;box-shadow:0 3px 12px #183b2d06}.search:focus{border-color:var(--forest2);box-shadow:0 0 0 4px #245c4b12}.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{border:1px solid var(--line);background:#fff;padding:10px 15px;border-radius:12px;cursor:pointer;font:inherit;font-size:12px;color:#536158;transition:.2s}.filter:hover{border-color:#9db5a7}.filter.active{background:var(--forest);color:#fff;border-color:var(--forest);box-shadow:0 5px 14px #173f3525}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .22s,box-shadow .22s,border-color .22s}.card:hover{transform:translateY(-5px);box-shadow:0 18px 38px #183b2d15;border-color:#d4dfd5}.product-visual{height:166px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 42%,#fff 0,#f6f2e7 58%,#e9eee5 100%)}.product-visual:before{content:"";position:absolute;width:125px;height:125px;border-radius:50%;background:#ffffff8c;box-shadow:0 12px 30px #405b3c10}.product-visual span{position:relative;font-size:67px;filter:drop-shadow(0 10px 9px #4c55452a);transition:transform .25s}.card:hover .product-visual span{transform:scale(1.1) rotate(-4deg)}.card-body{padding:17px}.category{display:inline-block;font-size:10px;color:var(--forest2);font-weight:800;background:var(--mint);padding:4px 9px;border-radius:20px}.card h3{font-size:16px;margin:9px 0 5px}.price{font-size:19px;font-weight:900;color:var(--forest);margin:7px 0 0;letter-spacing:-.4px}.unit{font-size:11px;color:var(--muted)}.card .order{width:100%;margin-top:15px;background:var(--forest);color:white;padding:10px;border-radius:11px}.empty{grid-column:1/-1;text-align:center;padding:38px;color:var(--muted);background:#fff;border-radius:18px;border:1px dashed #d9ded6}
+    .banner{position:relative;overflow:hidden;background:linear-gradient(110deg,#173f35,#28634f);color:#fff;border-radius:25px;padding:32px 35px;display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:var(--shadow)}.banner:after{content:"🛍️";position:absolute;left:28%;top:-25px;font-size:100px;opacity:.08;transform:rotate(-15deg)}.banner h2{margin:0 0 5px;font-size:23px}.banner p{margin:0;color:#d7e5dc;font-size:13px}.banner .order{background:var(--gold);color:#24352b;white-space:nowrap;z-index:1}
+    footer{background:#112e27;color:#dce8e1;padding:34px 0;margin-top:22px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot strong{font-size:18px}.foot small{color:#aebfb5}.foot a{color:#f0cf86}.copyright{border-top:1px solid #ffffff1b;margin-top:24px;padding-top:15px;color:#9fb1a7;font-size:11px}
+    .floating-order{position:fixed;bottom:18px;left:18px;z-index:30;background:#245c4b;color:white;padding:12px 17px;border-radius:50px;box-shadow:0 8px 25px #102d2650;font-size:12px;font-weight:800;border:2px solid #ffffffcc}
+    @media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}.hero-grid{grid-template-columns:1fr .7fr}.hero-art{min-height:220px}.navlinks{gap:14px}}
+    @media(max-width:680px){.grid{grid-template-columns:repeat(2,1fr);gap:12px}.hero-grid{grid-template-columns:1fr}.hero-art{min-height:150px}.hero-emojis{font-size:49px}.navlinks{display:none}.nav{min-height:66px}.hero{padding:45px 0 54px}.trust-row{padding:13px 7px;gap:5px}.trust-item{font-size:10px;gap:5px}.trust-item b{font-size:17px}.section{padding:40px 0}.section h2{font-size:23px}.banner{padding:25px;align-items:flex-start;flex-direction:column}.banner h2{font-size:20px}}
+    @media(max-width:390px){.product-visual{height:125px}.product-visual span{font-size:54px}.card-body{padding:12px}.card h3{font-size:14px}.price{font-size:16px}.filter{padding:8px 10px}}
+
+    /* طرح جایگزین: بازار روشن با آبی عمیق و نارنجی */
+    :root{--forest:#183b72;--forest2:#2859a0;--mint:#eaf1ff;--cream:#f5f7fb;--ink:#182338;--muted:#748096;--line:#e3e9f2;--gold:#ff8a45;--white:#fff;--shadow:0 16px 42px #183b7212}
+    body{background:#f5f7fb;color:#182338}
+    header{background:#fff;color:#183b72;border-bottom:1px solid #e7edf5;box-shadow:0 5px 22px #183b720c}
+    .brand span{color:#f07836}.navlinks{color:#566984}.navlinks a:hover{color:#f07836}
+    .navbtn,.order{background:#ff8742;color:#fff;border-radius:9px;box-shadow:0 7px 16px #ff874229}
+    .navbtn:hover,.order:hover{filter:brightness(.96);transform:translateY(-2px)}
+    .hero{padding:62px 0 76px;background:linear-gradient(115deg,#eaf1ff 0%,#f7f9fd 55%,#fff0e7 100%);color:#182338}
+    .hero:after{opacity:.22;background-image:linear-gradient(135deg,#2859a014 25%,transparent 25%,transparent 50%,#2859a014 50%,#2859a014 75%,transparent 75%,transparent);background-size:34px 34px}
+    .eyebrow{color:#2859a0;background:#fff;border:1px solid #dce6f5}
+    .hero h1{color:#183b72}.hero p{color:#5f6e83}
+    .hero-art{border:0;border-radius:26px;background:linear-gradient(145deg,#183b72,#3974c4);box-shadow:0 24px 55px #183b7230}
+    .hero-art:before,.hero-art:after{border-color:#ffffff32}
+    .hero-art small{color:#ffe0c9}
+    .hero-actions .secondary{border:1px solid #b9c9e2;color:#183b72;background:#ffffffa8}
+    .trust-row{border-radius:13px;box-shadow:0 12px 32px #183b7210}
+    .trust-item{color:#2859a0}
+    .section-kicker{color:#f07836}
+    .search{border-radius:10px;border-color:#dfe6f0;box-shadow:none}
+    .search:focus{border-color:#3974c4;box-shadow:0 0 0 4px #3974c418}
+    .filter{border-radius:9px;border-color:#e0e7f1;color:#566984}
+    .filter.active{background:#183b72;border-color:#183b72;box-shadow:0 6px 14px #183b7225}
+    .grid{gap:16px}
+    .card{border:1px solid #e6ebf3;border-radius:13px;box-shadow:0 5px 18px #183b7208}
+    .card:hover{border-color:#b9ccec;box-shadow:0 16px 32px #183b7218}
+    .product-visual{height:175px;background:linear-gradient(145deg,#eaf1ff,#f7f9fc 60%,#fff0e7)}
+    .product-visual:before{width:118px;height:118px;background:#fff;box-shadow:0 12px 28px #183b7214}
+    .product-visual span{font-size:72px}
+    .category{color:#2859a0;background:#eaf1ff;border-radius:6px}
+    .card h3{color:#1e2e49}
+    .price{color:#183b72}
+    .card .order{background:#183b72;box-shadow:none;border-radius:8px}
+    .banner{background:linear-gradient(110deg,#183b72,#2859a0);border-radius:14px;box-shadow:0 18px 38px #183b7222}
+    .banner .order{background:#ff8742;color:#fff}
+    footer{background:#142b50;color:#e7eef9}
+    .foot a{color:#ffad7d}
+    .floating-order{background:#ff8742;border:2px solid #fff;box-shadow:0 9px 26px #183b7238}
+    @media(max-width:680px){.hero{padding:42px 0 58px}.product-visual{height:145px}}
+
+    /* سبد خرید */
+    .cart-section{padding:12px 0 58px}
+    .cart-panel{background:#fff;border:1px solid #e2e9f3;border-radius:18px;padding:22px;box-shadow:0 12px 30px #183b720c}
+    .cart-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}
+    .cart-heading h2{margin:0;color:#183b72;font-size:23px}
+    .cart-count{background:#fff0e7;color:#c65c20;border-radius:30px;padding:5px 12px;font-size:12px;font-weight:800}
+    .cart-empty{padding:22px;text-align:center;background:#f6f8fc;border-radius:12px;color:#748096;font-size:13px}
+    .cart-list{display:grid;gap:9px}
+    .cart-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:12px;border:1px solid #edf0f5;border-radius:12px}
+    .cart-name{font-weight:800;color:#253956}.cart-meta{font-size:11px;color:#748096}
+    .qty-control{display:flex;align-items:center;gap:9px;background:#f2f5fa;padding:4px;border-radius:9px}
+    .qty-control button,.remove-item{border:0;cursor:pointer;font:inherit}
+    .qty-control button{width:28px;height:28px;border-radius:7px;background:#183b72;color:#fff;font-weight:900}
+    .qty-control span{min-width:18px;text-align:center;font-size:13px;font-weight:800}
+    .remove-item{background:transparent;color:#c45b45;font-size:12px}
+    .cart-line-total{font-weight:900;color:#183b72;white-space:nowrap;font-size:13px}
+    .cart-total{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #e8edf4;margin-top:16px;padding-top:15px;font-weight:900;color:#183b72}
+    .checkout-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .checkout-fields label{display:grid;gap:6px;font-size:12px;font-weight:700;color:#52627a}
+    .checkout-fields input{width:100%;border:1px solid #dfe6f0;border-radius:10px;padding:12px;font:inherit;outline:none}
+    .checkout-fields input:focus{border-color:#3974c4;box-shadow:0 0 0 3px #3974c418}
+    .checkout-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .checkout-btn{border:0;background:#ff8742;color:#fff;border-radius:10px;padding:13px 20px;font:inherit;font-weight:900;cursor:pointer}
+    .checkout-note{font-size:11px;color:#748096;line-height:1.8}
+    .order-output{width:100%;min-height:130px;margin-top:14px;border:1px dashed #b9c9e2;border-radius:10px;padding:12px;font:13px/1.9 Tahoma,Arial;direction:rtl;display:none}
+    .cart-fab{position:fixed;right:18px;bottom:18px;z-index:31;background:#183b72;color:#fff;padding:12px 17px;border-radius:50px;box-shadow:0 9px 26px #183b7238;font-size:12px;font-weight:900;border:2px solid #fff;cursor:pointer}
+    .card .add-cart{width:100%;margin-top:10px;background:#ff8742;color:#fff;padding:10px;border:0;border-radius:8px;font:inherit;font-size:12px;font-weight:900;cursor:pointer}
+    .card .add-cart:hover,.checkout-btn:hover{filter:brightness(.96)}
+    @media(max-width:600px){.cart-panel{padding:15px}.cart-row{grid-template-columns:1fr auto;gap:7px}.cart-line-total{grid-column:1}.checkout-fields{grid-template-columns:1fr}.cart-heading h2{font-size:20px}}
+
   </style>
 </head>
 <body>
-<header><div class="wrap nav"><a class="brand" href="#top">خرید <span>منصفانه</span></a><nav class="navlinks"><a href="#products">محصولات</a><a href="#about">درباره ما</a><a href="https://eitaa.com/monsefanebekhar" target="_blank" rel="noopener">کانال ایتا</a></nav><a class="navbtn" href="https://eitaa.com/aliblee" target="_blank" rel="noopener">ثبت سفارش</a></div></header>
+<header><div class="wrap nav"><a class="brand" href="#top">خرید <span>منصفانه</span></a><nav class="navlinks"><a href="#products">محصولات</a><a href="#about">درباره ما</a><a href="https://eitaa.com/monsefanebekhar" target="_blank" rel="noopener">کانال ایتا</a></nav><a class="navbtn" href="https://eitaa.com/sefaresh_mon" target="_blank" rel="noopener">ثبت سفارش</a></div></header>
 <main id="top">
-  <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">خرید مستقیم، قیمت شفاف</div><h1>از تولیدکننده<br>تا مصرف‌کننده</h1><p>محصولات منتخب را ببینید، قیمت روز را بررسی کنید و برای ثبت سفارش مستقیم در ایتا پیام بدهید.</p><div class="features"><span>قیمت‌گذاری شفاف</span><span>ثبت سفارش آسان</span><span>ارتباط مستقیم</span></div></div><div class="hero-art" aria-hidden="true">🫘 🌾 🫒</div></div></section>
-  <section class="section" id="products"><div class="wrap"><div class="section-head"><div><h2>محصولات</h2><p class="sub">قیمت‌ها به تومان و برای هر کیلوگرم هستند.</p></div></div>
+  <section class="hero"><div class="wrap hero-grid"><div><div class="eyebrow">خرید مستقیم، قیمت شفاف</div><h1>از تولیدکننده<br>تا مصرف‌کننده</h1><p>محصولات منتخب را ببینید، قیمت روز را بررسی کنید و برای ثبت سفارش مستقیم در ایتا پیام بدهید.</p><div class="features"><span>قیمت‌گذاری شفاف</span><span>ثبت سفارش آسان</span><span>ارتباط مستقیم</span></div><div class="hero-actions"><a class="navbtn" href="#products">مشاهده محصولات</a><a class="secondary" href="https://eitaa.com/sefaresh_mon" target="_blank" rel="noopener">سفارش در ایتا</a></div></div><div class="hero-art" aria-hidden="true"><div class="hero-emojis">🫘 🌾 🫒</div><small>کیفیت خوب، قیمت منصفانه</small></div></div></section>
+  <div class="wrap trust"><div class="trust-row"><div class="trust-item"><b>✓</b> قیمت‌های شفاف</div><div class="trust-item"><b>◎</b> ارتباط مستقیم</div><div class="trust-item"><b>↗</b> سفارش آسان</div></div></div>
+  <section class="section" id="products"><div class="wrap"><div class="section-head"><div><div class="section-kicker">انتخاب هوشمندانه</div><h2>محصولات ما</h2><p class="sub">قیمت‌ها به تومان و برای هر کیلوگرم هستند.</p></div></div>
     <div class="tools"><input id="search" class="search" type="search" placeholder="جست‌وجوی محصول…" aria-label="جست‌وجوی محصول"><div class="filters" id="filters"><button class="filter active" data-category="همه">همه</button><button class="filter" data-category="حبوبات">حبوبات</button><button class="filter" data-category="غذای آماده">غذای آماده</button><button class="filter" data-category="چاشنی و سایر">چاشنی و سایر</button></div></div>
     <div class="grid" id="productGrid"></div>
   </div></section>
-  <section class="section" id="about"><div class="wrap"><div class="banner"><div><h2>برای سفارش یا دریافت اطلاعات بیشتر</h2><p>از طریق ایتا پیام بدهید؛ برای اطلاع از موجودی و قیمت نهایی هماهنگ می‌کنیم.</p></div><a class="order" href="https://eitaa.com/aliblee" target="_blank" rel="noopener">ارتباط و سفارش در ایتا</a></div></div></section>
+
+  <section class="cart-section" id="cart">
+    <div class="wrap">
+      <div class="cart-panel">
+        <div class="cart-heading"><h2>🛒 سبد خرید شما</h2><span class="cart-count" id="cartCount">۰ قلم</span></div>
+        <div id="cartContents"><div class="cart-empty">هنوز محصولی به سبد خرید اضافه نکرده‌اید.</div></div>
+        <div class="cart-total"><span>مبلغ کل سفارش</span><strong id="cartTotal">۰ تومان</strong></div>
+        <div class="checkout-fields">
+          <label>نام و نام خانوادگی<input id="customerName" type="text" autocomplete="name" placeholder="نام شما" required></label>
+          <label>شماره تماس<input id="customerPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="مثلاً 0912xxxxxxx" required></label>
+        </div>
+        <div class="checkout-actions">
+          <button class="checkout-btn" id="checkoutBtn" type="button">تأیید و آماده‌سازی سفارش در ایتا</button>
+          <span class="checkout-note">پس از آماده شدن فاکتور، گفت‌وگوی ایتا باز می‌شود. متن سفارش کپی شده و کافی است آن را در گفت‌وگو Paste و ارسال کنید.</span>
+        </div>
+        <textarea id="orderOutput" class="order-output" readonly aria-label="متن سفارش آماده ارسال"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about"><div class="wrap"><div class="banner"><div><h2>برای سفارش یا دریافت اطلاعات بیشتر</h2><p>از طریق ایتا پیام بدهید؛ برای اطلاع از موجودی و قیمت نهایی هماهنگ می‌کنیم.</p></div><a class="order" href="https://eitaa.com/sefaresh_mon" target="_blank" rel="noopener">ارتباط و سفارش در ایتا</a></div></div></section>
 </main>
-<footer><div class="wrap foot"><div><strong>خرید منصفانه</strong><br><small>خرید مستقیم، ارتباط شفاف</small></div><div><a href="https://eitaa.com/monsefanebekhar" target="_blank" rel="noopener">عضویت در کانال ایتا</a><br><small>ثبت سفارش: @aliblee</small></div></div></footer>
+<footer><div class="wrap foot"><div><strong>خرید منصفانه</strong><br><small>خرید مستقیم، ارتباط شفاف</small></div><div><a href="https://eitaa.com/monsefanebekhar" target="_blank" rel="noopener">عضویت در کانال ایتا</a><br><small>ثبت سفارش: @sefaresh_mon</small></div></div></footer>
+<a class="floating-order" href="https://eitaa.com/sefaresh_mon" target="_blank" rel="noopener">✉ سفارش در ایتا</a>
+<button class="cart-fab" id="cartFab" type="button">🛒 سبد خرید <span id="fabCount">۰</span></button>
 <script>
-  // برای تغییر محصولات، فقط نام، دسته‌بندی و قیمت را در همین فهرست ویرایش کنید.
   const products = [
     {name:'عدس',category:'حبوبات',price:165000,icon:'🫘'},
     {name:'لوبیا چیتی ارتشی',category:'حبوبات',price:320000,icon:'🫘'},
@@ -50,15 +142,113 @@
   ];
   const fmt = n => new Intl.NumberFormat('fa-IR').format(n);
   let selectedCategory = 'همه';
+  const cart = {};
   const grid = document.getElementById('productGrid');
-  function render(){
+
+  function renderProducts(){
     const q = document.getElementById('search').value.trim().toLowerCase();
     const list = products.filter(p => (selectedCategory==='همه'||p.category===selectedCategory) && p.name.toLowerCase().includes(q));
-    grid.innerHTML = list.length ? list.map(p => `<article class="card"><div class="product-visual" aria-hidden="true">${p.icon}</div><div class="card-body"><div class="category">${p.category}</div><h3>${p.name}</h3><div class="price">${fmt(p.price)} تومان</div><div class="unit">هر کیلوگرم</div><a class="order" href="https://eitaa.com/aliblee" target="_blank" rel="noopener">سفارش این محصول</a></div></article>`).join('') : '<div class="empty">محصولی با این مشخصات پیدا نشد.</div>';
+    grid.innerHTML = list.length ? list.map(p => `<article class="card"><div class="product-visual" aria-hidden="true"><span>${p.icon}</span></div><div class="card-body"><div class="category">${p.category}</div><h3>${p.name}</h3><div class="price">${fmt(p.price)} تومان</div><div class="unit">هر کیلوگرم</div><button class="add-cart" type="button" data-add="${p.name}">افزودن به سبد خرید +</button></div></article>`).join('') : '<div class="empty">محصولی با این مشخصات پیدا نشد.</div>';
   }
-  document.getElementById('search').addEventListener('input',render);
-  document.getElementById('filters').addEventListener('click',e=>{const b=e.target.closest('button[data-category]');if(!b)return;selectedCategory=b.dataset.category;document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));render();});
-  render();
+
+  function renderCart(){
+    const entries = Object.entries(cart).filter(([,qty]) => qty > 0);
+    const totalQty = entries.reduce((sum,[,qty]) => sum + qty,0);
+    const total = entries.reduce((sum,[name,qty]) => sum + products.find(p=>p.name===name).price*qty,0);
+    document.getElementById('cartCount').textContent = fmt(totalQty) + ' قلم';
+    document.getElementById('fabCount').textContent = fmt(totalQty);
+    document.getElementById('cartTotal').textContent = fmt(total) + ' تومان';
+    const box = document.getElementById('cartContents');
+    if(!entries.length){
+      box.innerHTML = '<div class="cart-empty">هنوز محصولی به سبد خرید اضافه نکرده‌اید.</div>';
+      return;
+    }
+    box.innerHTML = '<div class="cart-list">' + entries.map(([name,qty]) => {
+      const p = products.find(x=>x.name===name);
+      return `<div class="cart-row">
+        <div><div class="cart-name">${p.name}</div><div class="cart-meta">${fmt(p.price)} تومان برای هر کیلوگرم</div></div>
+        <div class="qty-control"><button type="button" data-change="${name}" data-delta="-1" aria-label="کاهش تعداد">−</button><span>${fmt(qty)}</span><button type="button" data-change="${name}" data-delta="1" aria-label="افزایش تعداد">+</button></div>
+        <div class="cart-line-total">${fmt(p.price*qty)} تومان</div>
+        <button class="remove-item" type="button" data-remove="${name}">حذف محصول</button>
+      </div>`;
+    }).join('') + '</div>';
+  }
+
+  document.getElementById('search').addEventListener('input',renderProducts);
+  document.getElementById('filters').addEventListener('click',e=>{
+    const b=e.target.closest('button[data-category]'); if(!b)return;
+    selectedCategory=b.dataset.category;
+    document.querySelectorAll('.filter').forEach(x=>x.classList.toggle('active',x===b));
+    renderProducts();
+  });
+  grid.addEventListener('click',e=>{
+    const b=e.target.closest('[data-add]'); if(!b)return;
+    const name=b.dataset.add;
+    cart[name]=(cart[name]||0)+1;
+    renderCart();
+    b.textContent='✓ اضافه شد';
+    setTimeout(()=>{if(b.isConnected)b.textContent='افزودن به سبد خرید +';},900);
+  });
+  document.getElementById('cartContents').addEventListener('click',e=>{
+    const change=e.target.closest('[data-change]');
+    const remove=e.target.closest('[data-remove]');
+    if(change){
+      const name=change.dataset.change;
+      cart[name]=Math.max(0,(cart[name]||0)+Number(change.dataset.delta));
+      if(!cart[name])delete cart[name];
+      renderCart();
+    }
+    if(remove){delete cart[remove.dataset.remove];renderCart();}
+  });
+  document.getElementById('cartFab').addEventListener('click',()=>document.getElementById('cart').scrollIntoView({behavior:'smooth'}));
+
+  document.getElementById('checkoutBtn').addEventListener('click',async()=>{
+    const entries=Object.entries(cart).filter(([,qty])=>qty>0);
+    if(!entries.length){alert('سبد خرید شما خالی است. ابتدا محصول اضافه کنید.');return;}
+    const name=document.getElementById('customerName').value.trim();
+    const phone=document.getElementById('customerPhone').value.trim();
+    if(!name||!phone){alert('لطفاً نام و شماره تماس را وارد کنید.');return;}
+    const total=entries.reduce((sum,[productName,qty])=>sum+products.find(p=>p.name===productName).price*qty,0);
+    const lines=[
+      '🛒 سفارش جدید از کاتالوگ خرید منصفانه',
+      'نام مشتری: '+name,
+      'شماره تماس: '+phone,
+      '-------------------------',
+      ...entries.map(([productName,qty],i)=>{
+        const p=products.find(x=>x.name===productName);
+        return (i+1)+') '+p.name+' | '+fmt(qty)+' کیلوگرم | '+fmt(p.price*qty)+' تومان';
+      }),
+      '-------------------------',
+      'جمع کل: '+fmt(total)+' تومان',
+      'لطفاً برای تأیید موجودی و هماهنگی ارسال با مشتری تماس بگیرید.'
+    ];
+    const orderText=lines.join('\\n');
+    const output=document.getElementById('orderOutput');
+    output.value=orderText;
+    output.style.display='block';
+    output.focus();
+    output.select();
+
+    // پنجره ایتا در همان کلیک کاربر باز می‌شود؛ متن سفارش در کلیپ‌بورد قرار می‌گیرد.
+    window.open('https://eitaa.com/sefaresh_mon','_blank','noopener');
+    let copied=false;
+    try{
+      if(navigator.clipboard && window.isSecureContext){
+        await navigator.clipboard.writeText(orderText);
+        copied=true;
+      }else{
+        copied=document.execCommand('copy');
+      }
+    }catch(err){
+      try{copied=document.execCommand('copy');}catch(e){copied=false;}
+    }
+    alert(copied
+      ? 'متن فاکتور کپی شد و گفت‌وگوی ایتا باز شد. در گفت‌وگو Paste کنید و دکمه ارسال را بزنید.'
+      : 'گفت‌وگوی ایتا باز شد. متن فاکتور در کادر پایین نمایش داده شده؛ آن را کپی و در گفت‌وگو ارسال کنید.');
+  });
+
+  renderProducts();
+  renderCart();
 </script>
 </body>
 </html>
