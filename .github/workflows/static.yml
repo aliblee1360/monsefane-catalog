@@ -1,5 +1,9 @@
-push:
-    branches: ["main"]
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -8,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -17,7 +21,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,15 +31,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-
-
-سپس:
-1. روی Commit changes کلیک کن.
-2. پیام ثبت را تأیید کن.
-3. به تب Actions برو.
